@@ -1,28 +1,68 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" v-cloak>
+      <Header :msg="msg"></Header>
+      <router-view></router-view>
+      <Footer :msg="msg"></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header.vue"
+import Footer from './components/Footer.vue'
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Header,
+    Footer
+  },
+  data() {
+    return {
+      msg: {
+        header: '欢迎来到新闻的世界！',
+        footer: '版权所属@0910'
+      }
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[v-cloak] {
+  display: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 14px;
+  font-family: "微软雅黑,宋体";
+  color: #999;
+  background-color: #eee;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+.container {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+}
+h1 {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #41b883;
+  width: 200px;
+  background-color: #fff;
+  margin: 0 auto 20px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px #41b883;
+  box-sizing: border-box;
+}
+.ql-editor {
+  min-height: 200px;
 }
 </style>
