@@ -9,7 +9,7 @@ import VueCookies from 'vue-cookies'
 
 
 Vue.config.productionTip = false
-axios.defaults.baseURL = "http://www.atone.shop/dist/api/"
+axios.defaults.baseURL = "https://www.atone.shop/dist/api/"
 axios.defaults.withCredentials = true
 
 

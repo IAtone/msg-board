@@ -6,11 +6,11 @@ import Register from '../components/Register.vue'
 import Login from '../components/Login.vue'
 import Profile from '../components/profile/Personal.vue'
 import Avatar from '../components/profile/avatar.vue'
-import Cookie from './cookie.js'
+// import Cookie from './cookie.js'
 
 Vue.use(VueRouter)
 
-var isLogin = (/username/).test(document.cookie)
+// var isLogin = (/username/).test(document.cookie)
 
 const routes = [
     {

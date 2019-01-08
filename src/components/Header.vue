@@ -17,7 +17,7 @@
         active-text-color="#fff"
       >
         <el-menu-item index="1">
-          <router-link to="/" tag="div">新闻中心</router-link>
+          <router-link to="/" tag="div">留言中心</router-link>
         </el-menu-item>
         <el-submenu index="2" v-if="status">
           <template slot="title">{{ username }}</template>

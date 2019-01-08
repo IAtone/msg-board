@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="container">
-      <h1>新闻列表</h1>
+      <h1>留言列表</h1>
       <ul>
         <li v-for="(val, index) in news" :key="index">
           <span>{{ val.createDate }}</span>
