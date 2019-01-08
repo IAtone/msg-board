@@ -1,4 +1,4 @@
-# news
+# msg-board
 
 ## Project setup
 ```
