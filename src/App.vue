@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       msg: {
-        header: '欢迎来到新闻的世界！',
+        header: '欢迎来到留言板的世界！',
         footer: '版权所属@0910'
       }
     }

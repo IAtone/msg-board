@@ -3,7 +3,7 @@
     <h1>用户注册</h1>
     <form action>
       <div class="avatar">
-        <input type="file" accept="image/*" class="uploadFile" @change="upload($event)">
+        <input type="file" accept="image/*" class="uploadFile" @change="upload($event)" title="请选择你的照片">
         <!-- <input type="hidden" :value="baseData.base" > -->
         <img :src="baseData.src" width="100" height="100">
         <!-- <input type="hidden" v-model="baseData.src"> -->
@@ -119,10 +119,14 @@ form .avatar {
 }
 .uploadFile {
   position: absolute;
+  left: 0;
+  top: 0;
   opacity: 0;
   width: 100%;
   height: 100%;
   z-index: 9;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 label {
   color: #41b883;

@@ -27,8 +27,8 @@
             }
                 
             if(isset($_POST['content']) && $_POST['content']!=""){
-                $content = htmlspecialchars($_POST['content']);
-                // htmlentities
+                $content = htmlentities($_POST['content']);
+                // htmlentities stripslashes
             }else{
                 $valid = false;
                 $message = '聊天内容不能为空';

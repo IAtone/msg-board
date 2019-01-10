@@ -12,9 +12,9 @@
         class="el-menu-demo"
         mode="horizontal"
         @select="handleSelect"
-        background-color="#41B883"
-        text-color="#fff"
-        active-text-color="#fff"
+        background-color="#fff"
+        text-color="#41B883"
+        active-text-color="#41b883"
       >
         <el-menu-item index="1">
           <router-link to="/" tag="div">留言中心</router-link>
@@ -33,7 +33,7 @@
         <el-menu-item index="3">
           <router-link tag="div" :to="{name: 'Register'}">注册</router-link>
         </el-menu-item>
-        <el-menu-item index="4">
+        <el-menu-item index="4" v-if="!username">
           <router-link tag="div" :to="{path: '/login'}">登录</router-link>
         </el-menu-item>
       </el-menu>
@@ -60,6 +60,7 @@ export default {
       this.$cookies.remove("username");
       this.$cookies.remove("userId");
       this.$cookies.remove("userlevel");
+      this.username = "";
       this.status = "";
       this.$router.push("/login");
     },
@@ -99,7 +100,7 @@ export default {
 
 <style>
 .header {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #fff;
   margin-bottom: 20px;
 }
 .header .container {
@@ -113,10 +114,10 @@ export default {
 }
 .logo span {
   font-size: 18px;
-  color: #fff;
+  color: #41b883;
 }
 .el-submenu__title i {
-  color: #fff !important;
+  color: #41b883 !important;
 }
 .header .el-menu-item,
 .header .el-submenu__title {
@@ -138,11 +139,10 @@ a {
   border: none;
 }
 .el-menu-demo .router-link-exact-active {
-  color: #41b883;
-  background-color: #fff;
+  color: #fff;
+  background-color: #41b883;
 }
-.el-menu--horizontal > .is-active,
-.el-menu--horizontal > .el-menu-item {
+.el-menu--horizontal > .is-active.el-menu-item {
   border: none;
 }
 </style>

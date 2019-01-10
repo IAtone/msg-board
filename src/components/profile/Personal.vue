@@ -254,6 +254,7 @@ export default {
             console.log(res);
             if (res.data.valid) {
               alert("创建聊天室成功!");
+              this.$router.push('/');
             } else {
               alert("创建聊天室失败!");
             }

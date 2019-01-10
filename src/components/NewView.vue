@@ -1,7 +1,9 @@
 <template>
   <div class="newview">
-    <h1>{{ newsContent.title }}</h1>
-    <p class="conBody">{{ newsContent.body }}</p>
+    <h1 v-if="newsContent.title">{{ newsContent.title }}</h1>
+    <h1 v-else>我很神秘</h1>
+    <p class="conBody" v-if="newsContent.body">{{ newsContent.body }}</p>
+    <p class="conBody" v-else>你是第一个进来的,等你来发现秘密!</p>
     <div class="edit_container">
       <quill-editor v-model="content" ref="myQuillEditor" :options="editorOption" class="quill"></quill-editor>
       <div class="button">
@@ -12,7 +14,7 @@
       <h5 class="hTitle">热门评论</h5>
       <div class="com" v-for="(val, index) in newsView" :key="index">
         <figure>
-          <img v-if="val.userAvatar != null" :src="userAvatar + val.userAvatar">
+          <img v-if="val.userAvatar != null" :src="userAvatar + val.userAvatar.slice(2)">
           <img v-else src="https://tvax4.sinaimg.cn/default/images/default_avatar_female_50.gif">
         </figure>
         <aside class="user_info">
@@ -34,7 +36,7 @@
       </div>
     </section>
     <div class="button">
-      <button @click="onLoadMore()" v-if="flag">加载更多{{comLen}}</button>
+      <button @click="onLoadMore()" v-if="flag && comLen != 0">加载更多{{comLen}}</button>
       <button v-else>不能再点了哦！</button>
     </div>
   </div>
@@ -62,17 +64,17 @@ export default {
       comLen: 0,
       flag: true,
       num: 1,
-      userAvatar: "http://www.atone.shop/",
+      userAvatar: "http://www.atone.shop/dist",
       editorOption: {},
-      content: ``,
+      content: '',
       userId: this.$cookies.get('userId')
     };
   },
-  computed: {
-    editor() {
-      return this.$refs.myQuillEditor.quill;
-    }
-  },
+  // computed: {
+  //   editor() {
+  //     return this.$refs.myQuillEditor.quill;
+  //   }
+  // },
   created() {
     this.getDetails(this.start, this.end);
     // this.getUserId();
@@ -110,7 +112,8 @@ export default {
       this.getDetails(0, this.end);
     },
     publish() {
-      let obj = {
+     if ( this.$cookies.get('username') ) {
+        let obj = {
         chatId: this.id,
         content: this.content,
         userId: this.userId
@@ -133,6 +136,9 @@ export default {
         .catch(err => {
           console.log(err);
         });
+     } else {
+       alert('请先登录再发送留言!')
+     }
     }
   }
 };
